@@ -1,14 +1,13 @@
-name: "Deploy"
+name: "On Pull Request"
 
 on:
-  push:
-    branches: ["main"]
+  pull_request:
     paths: ["src/**"]
   workflow_dispatch:
 
 jobs:
   terraform:
-    name: "Terraform Apply"
+    name: "Terraform Plan"
     runs-on: "ubuntu-latest"
     steps:
       - name: "Configure AWS Credentials"
@@ -26,6 +25,10 @@ jobs:
         working-directory: ./src
         run: terraform init
 
-      - name: Terraform apply
+      - name: Terraform plan
         working-directory: ./src
-        run: terraform apply -auto-approve
+        run: terraform plan
+
+      - name: Terraform Validate
+        working-directory: ./src
+        run: terraform validate
