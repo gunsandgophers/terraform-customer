@@ -45,6 +45,10 @@ resource "aws_iam_policy" "lambda_policy" {
           "logs:CreateLogGroup",
           "logs:CreateLogStream",
           "logs:PutLogEvents",
+          "cognito-idp:ListUsers",
+          "cognito-idp:GetUser",
+          "cognito-idp:AdminGetUser",
+          "cognito-idp:AdminCreateUser"
         ]
         Resource = "*"
       },

@@ -44,23 +44,23 @@ resource "aws_api_gateway_integration" "CreateCustomerMethodIntegration" {
 
 # Permitir que o API Gateway invoque a função Lambda
 resource "aws_lambda_permission" "allow_api_gateway_GetCustomer" {
-  statement_id  = "AllowAPIGatewayInvokeGetCustomer"
+  # statement_id  = "AllowAPIGatewayInvokeGetCustomer"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.GetCustomerLambda.function_name
   principal     = "apigateway.amazonaws.com"
 
   # Define o ARN do API Gateway
-  source_arn = "${aws_api_gateway_rest_api.CustomerAPI.execution_arn}/GetCustomer/*/*"
+  # source_arn = "${aws_api_gateway_rest_api.CustomerAPI.execution_arn}/GetCustomer/*/*"
 }
 
 resource "aws_lambda_permission" "allow_api_gateway_CreateCustomer" {
-  statement_id  = "AllowAPIGatewayInvokeCreateCustomer"
+  # statement_id  = "AllowAPIGatewayInvokeCreateCustomer"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.CreateCustomerLambda.function_name
   principal     = "apigateway.amazonaws.com"
 
   # Define o ARN do API Gateway
-  source_arn = "${aws_api_gateway_rest_api.CustomerAPI.execution_arn}/CreateCustomer/*/*"
+  # source_arn = "${aws_api_gateway_rest_api.CustomerAPI.execution_arn}/CreateCustomer/*/*"
 }
 
 # Criação do deployment do API Gateway
