@@ -50,7 +50,7 @@ resource "aws_lambda_permission" "allow_api_gateway_GetCustomer" {
   principal     = "apigateway.amazonaws.com"
 
   # Define o ARN do API Gateway
-  # source_arn = "${aws_api_gateway_rest_api.CustomerAPI.execution_arn}/*/*"
+  source_arn = "${aws_api_gateway_rest_api.CustomerAPI.execution_arn}/GetCustomer/*/*"
 }
 
 resource "aws_lambda_permission" "allow_api_gateway_CreateCustomer" {
@@ -60,7 +60,7 @@ resource "aws_lambda_permission" "allow_api_gateway_CreateCustomer" {
   principal     = "apigateway.amazonaws.com"
 
   # Define o ARN do API Gateway
-  # source_arn = "${aws_api_gateway_rest_api.CustomerAPI.execution_arn}/*/*"
+  source_arn = "${aws_api_gateway_rest_api.CustomerAPI.execution_arn}/CreateCustomer/*/*"
 }
 
 # Criação do deployment do API Gateway
